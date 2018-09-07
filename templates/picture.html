@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Picture
+{% endblock %}
+
+{% block body %}
+    <h1>Picture Details</h1>
+
+    <ul>
+        <li>Description: {{ picture.description }}</li>
+        <li>Time period: {{ picture.time_period }}</li>
+        <li>Image: <img src={{ url_for('static', filename='picture/'+picture.img_link) }}> </li>
+    </ul>
+
+    <h2>Preprocesses</h2>
+    <ul>
+      {% for preprocess in preprocesses %}
+        <li><a href="{{ url_for('listhieros', preprocess_id=preprocess.id) }}">{{ preprocess.process_name }}</a></li>
+      {% else %}
+          <li>No preprocess.</li>
+      {% endfor %}
+    </ul>
+
+{% endblock %}

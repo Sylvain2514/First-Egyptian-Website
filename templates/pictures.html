@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    List Pictures
+{% endblock %}
+
+{% block body %}
+    <h1>All Pictures</h1>
+
+    <ul>
+        {% for picture in pictures %}
+            <li>
+                <a href="{{ url_for('picture', picture_id=picture.id) }}">
+                    id: {{ picture.id }}, Description: {{ picture.description }}, Image: <img src="{{ url_for('static', filename='picture/' + picture.img_link ) }}" height="20">
+                </a>
+            </li>
+        {% else %}
+          <li>
+            No picture
+          </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

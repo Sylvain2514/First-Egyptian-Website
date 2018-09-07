@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    List hieros
+{% endblock %}
+
+{% block body %}
+    <h1>List hieros details</h1>
+
+    <ul>
+        <li>Preproces: {{ preprocess.process_name }}</li>
+        <li>Preprocess background : {{ preprocess.preprocess_background }}</li>
+        <li>Preprocess np : {{ preprocess.preprocess_np }}
+        <li>Image: <img src="{{ url_for('static', filename='picture/' + preprocess.img_link ) }}" height="40"> </li>
+        <li>Size: Width: {{ preprocess.nb_of_col }} Height: {{ preprocess.nb_of_row }}
+    </ul>
+
+    <h2>Hieros</h2>
+    <ul>
+      {% for hiero in hieros %}
+        <li>
+          Min {{ hiero.min_x }}
+          Max {{ hiero.max_x }}
+          Min Y {{ hiero.min_y }}
+          Max Y {{ hiero.max_y}}
+          Image: <img src="{{ url_for('static', filename='picture/hieros/' + hiero.img_link ) }}">
+        </li>
+      {% else %}
+          <li>No hieros.</li>
+      {% endfor %}
+    </ul>
+
+{% endblock %}
